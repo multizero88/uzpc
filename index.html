@@ -117,6 +117,31 @@
 
   .btn-primary:hover { background: #33ddff; }
 
+  .currency-switcher {
+    display: flex;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .cur-btn {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .2s;
+    border-right: 1px solid var(--border);
+  }
+
+  .cur-btn:last-child { border-right: none; }
+  .cur-btn:hover { color: var(--text); background: var(--border); }
+  .cur-btn.active { background: var(--accent); color: #000; }
+
   /* LAYOUT */
   .page {
     max-width: 1300px;
@@ -651,6 +676,11 @@
       <a href="#">Статьи</a>
     </nav>
     <div class="header-actions">
+      <div class="currency-switcher">
+        <button class="cur-btn active" onclick="setCurrency('RUB')">₽ RUB</button>
+        <button class="cur-btn" onclick="setCurrency('USD')">$ USD</button>
+        <button class="cur-btn" onclick="setCurrency('UZS')">UZS</button>
+      </div>
       <button class="btn btn-outline">Войти</button>
       <button class="btn btn-primary">Регистрация</button>
     </div>
@@ -879,13 +909,34 @@ const defaultBuilds = [
 let builds = JSON.parse(localStorage.getItem('builds') || 'null') || defaultBuilds;
 let likedBuilds = JSON.parse(localStorage.getItem('likedBuilds') || '[]');
 
-function saveLikes() {
-  localStorage.setItem('likedBuilds', JSON.stringify(likedBuilds));
-  localStorage.setItem('builds', JSON.stringify(builds));
+// === CURRENCY ===
+const rates = { RUB: 1, USD: 0.011, UZS: 141 };
+const symbols = { RUB: '₽', USD: '$', UZS: 'сум' };
+let currentCurrency = 'RUB';
+
+function setCurrency(cur) {
+  currentCurrency = cur;
+  document.querySelectorAll('.cur-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderBuilds();
+  updateTotal();
+}
+
+function convertPrice(rubAmount) {
+  return Math.round(rubAmount * rates[currentCurrency]);
 }
 
 function formatPrice(n) {
-  return n.toLocaleString('ru-RU') + ' ₽';
+  const converted = convertPrice(n);
+  const sym = symbols[currentCurrency];
+  if (currentCurrency === 'USD') return '$ ' + converted.toLocaleString('en-US');
+  if (currentCurrency === 'UZS') return converted.toLocaleString('ru-RU') + ' ' + sym;
+  return converted.toLocaleString('ru-RU') + ' ' + sym;
+}
+
+function saveLikes() {
+  localStorage.setItem('likedBuilds', JSON.stringify(likedBuilds));
+  localStorage.setItem('builds', JSON.stringify(builds));
 }
 
 function getInitials(name) {
@@ -988,7 +1039,10 @@ function updateTotal() {
     const inp = row.querySelectorAll('input')[1];
     if (inp) total += parseFloat(inp.value) || 0;
   });
+  const sym = symbols[currentCurrency];
   document.getElementById('total-price').textContent = formatPrice(total);
+  const label = document.querySelector('.parts-table th:nth-child(3)');
+  if (label) label.textContent = `Цена (${sym})`;
 }
 
 function saveBuild() {
