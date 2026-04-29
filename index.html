@@ -528,6 +528,49 @@
   .total-label { color: var(--text-dim); }
   .total-value { color: var(--green); font-size: 20px; }
 
+  .autocomplete-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--surface2);
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    z-index: 999;
+    max-height: 220px;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  }
+
+  .ac-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
+    gap: 10px;
+  }
+
+  .ac-item:last-child { border-bottom: none; }
+  .ac-item:hover { background: rgba(0,212,255,.08); }
+
+  .ac-name {
+    font-size: 12.5px;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .ac-price {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green);
+    white-space: nowrap;
+  }
+
   .add-part-btn {
     background: none;
     border: 1px dashed var(--border);
@@ -677,8 +720,8 @@
     </nav>
     <div class="header-actions">
       <div class="currency-switcher">
-        <button class="cur-btn active" onclick="setCurrency('RUB')">₽ RUB</button>
-        <button class="cur-btn" onclick="setCurrency('USD')">$ USD</button>
+        <button class="cur-btn" onclick="setCurrency('RUB')">₽ RUB</button>
+        <button class="cur-btn active" onclick="setCurrency('USD')">$ USD</button>
         <button class="cur-btn" onclick="setCurrency('UZS')">UZS</button>
       </div>
       <button class="btn btn-outline">Войти</button>
@@ -738,7 +781,8 @@
               <thead>
                 <tr>
                   <th style="width:130px">Категория</th>
-                  <th>Название / Ссылка</th>
+                  <th>Название</th>
+                  <th>Ссылка</th>
                   <th style="width:110px">Цена (₽)</th>
                   <th style="width:36px"></th>
                 </tr>
@@ -747,7 +791,7 @@
               </tbody>
               <tfoot>
                 <tr class="total-row">
-                  <td colspan="2" class="total-label">Итого:</td>
+                  <td colspan="3" class="total-label">Итого:</td>
                   <td class="total-value" id="total-price">0 ₽</td>
                   <td></td>
                 </tr>
@@ -912,7 +956,7 @@ let likedBuilds = JSON.parse(localStorage.getItem('likedBuilds') || '[]');
 // === CURRENCY ===
 const rates = { RUB: 1, USD: 0.011, UZS: 141 };
 const symbols = { RUB: '₽', USD: '$', UZS: 'сум' };
-let currentCurrency = 'RUB';
+let currentCurrency = 'USD';
 
 function setCurrency(cur) {
   currentCurrency = cur;
@@ -996,9 +1040,115 @@ function toggleLike(idx, e) {
 const categories = ['Процессор','Видеокарта','Оперативная память','SSD','Корпус','Материнская плата','Блок питания','Охлаждение','Вентиляторы'];
 let parts = [];
 
-function addPart(cat = '', name = '', price = '') {
+// База популярных комплектующих
+const partsDB = [
+  // Процессоры
+  {cat:'Процессор', name:'AMD Ryzen 5 5600', price:12500},
+  {cat:'Процессор', name:'AMD Ryzen 5 7500F', price:18900},
+  {cat:'Процессор', name:'AMD Ryzen 7 5700X', price:16500},
+  {cat:'Процессор', name:'AMD Ryzen 7 7800X3D', price:32000},
+  {cat:'Процессор', name:'AMD Ryzen 7 9800X3D', price:42000},
+  {cat:'Процессор', name:'AMD Ryzen 9 9950X', price:68000},
+  {cat:'Процессор', name:'Intel Core i3-12100F', price:8500},
+  {cat:'Процессор', name:'Intel Core i5-12400F', price:11000},
+  {cat:'Процессор', name:'Intel Core i5-13400F', price:13500},
+  {cat:'Процессор', name:'Intel Core i5-14400F', price:15000},
+  {cat:'Процессор', name:'Intel Core i5-14600KF', price:22000},
+  {cat:'Процессор', name:'Intel Core i7-13700KF', price:35000},
+  // Видеокарты
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 3060 12Gb', price:28000},
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 3070 8Gb', price:38000},
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 3080 10Gb', price:52000},
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 4060 8Gb', price:32000},
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 4060 Ti 16Gb', price:45000},
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 4070 12Gb', price:58000},
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 5060 8Gb', price:38000},
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 5060 Ti 16Gb', price:52000},
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 5070 12Gb', price:75000},
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 5080 16Gb', price:120000},
+  {cat:'Видеокарта', name:'NVIDIA GeForce RTX 5090 32Gb', price:230000},
+  {cat:'Видеокарта', name:'AMD Radeon RX 7600 8Gb', price:26000},
+  {cat:'Видеокарта', name:'AMD Radeon RX 7700 XT 12Gb', price:38000},
+  {cat:'Видеокарта', name:'AMD Radeon RX 9060 XT 16Gb', price:45000},
+  // Оперативная память
+  {cat:'Оперативная память', name:'Netac Shadow DDR4 16Gb (2x8) 3200MHz', price:3500},
+  {cat:'Оперативная память', name:'Netac Shadow DDR4 32Gb (2x16) 3200MHz', price:6500},
+  {cat:'Оперативная память', name:'Kingston FURY Beast DDR4 32Gb 3200MHz', price:7200},
+  {cat:'Оперативная память', name:'Kingston FURY Beast DDR5 32Gb 5600MHz', price:9500},
+  {cat:'Оперативная память', name:'ADATA XPG Lancer DDR5 32Gb 6000MHz', price:10500},
+  {cat:'Оперативная память', name:'G.Skill Trident Z5 DDR5 32Gb 6400MHz', price:13000},
+  // SSD
+  {cat:'SSD', name:'Kingston NV3 1TB M.2 NVMe', price:5500},
+  {cat:'SSD', name:'Patriot P400 Lite 1TB M.2 NVMe', price:5800},
+  {cat:'SSD', name:'ADATA Legend 960 1TB M.2 NVMe', price:7000},
+  {cat:'SSD', name:'ADATA Legend 960 MAX 2TB M.2 NVMe', price:12000},
+  {cat:'SSD', name:'Samsung 990 Pro 1TB M.2 NVMe', price:11000},
+  {cat:'SSD', name:'WD Black SN7100 1TB M.2 NVMe', price:9500},
+  // Корпуса
+  {cat:'Корпус', name:'LIAN LI Lancool 207', price:8500},
+  {cat:'Корпус', name:'LIAN LI O11 Dynamic EVO RGB', price:18000},
+  {cat:'Корпус', name:'Cougar Airface Flo RGB', price:7500},
+  {cat:'Корпус', name:'MONTECH AIR 903 BASE', price:6500},
+  {cat:'Корпус', name:'Deepcool CH560 Digital', price:9000},
+  {cat:'Корпус', name:'PHANTEKS XT M3', price:8000},
+  // Материнские платы
+  {cat:'Материнская плата', name:'MSI PRO B760-P WIFI DDR4', price:11000},
+  {cat:'Материнская плата', name:'Gigabyte B760M DS3H DDR4', price:9500},
+  {cat:'Материнская плата', name:'ASRock B650M Pro RS WiFi', price:14000},
+  {cat:'Материнская плата', name:'MSI MAG B650 TOMAHAWK WIFI', price:18000},
+  {cat:'Материнская плата', name:'GIGABYTE B850 GAMING X WIFI6E', price:22000},
+  {cat:'Материнская плата', name:'ASUS TUF GAMING B850-PLUS WIFI', price:24000},
+  // Блоки питания
+  {cat:'Блок питания', name:'1STPLAYER NGDP 650W 80+ Gold', price:6500},
+  {cat:'Блок питания', name:'1STPLAYER NGDP 750W 80+ Gold', price:7500},
+  {cat:'Блок питания', name:'1STPLAYER NGDP 850W 80+ Gold', price:8500},
+  {cat:'Блок питания', name:'DeepCool PF750 750W', price:6800},
+  {cat:'Блок питания', name:'Montech TITAN GOLD 750W', price:8000},
+  // Охлаждение
+  {cat:'Охлаждение', name:'Thermalright Peerless Assassin 120 SE', price:3500},
+  {cat:'Охлаждение', name:'Thermalright Phantom Spirit 120 SE', price:4000},
+  {cat:'Охлаждение', name:'DeepCool AK620', price:5500},
+  {cat:'Охлаждение', name:'Thermalright Frozen Notte 360 ARGB', price:8500},
+  {cat:'Охлаждение', name:'Arctic Liquid Freezer III 360', price:10000},
+  {cat:'Охлаждение', name:'DeepCool LE360 V2', price:9000},
+];
+
+function showAutocomplete(idx, query) {
+  const dropdown = document.getElementById(`autocomplete-${idx}`);
+  if (!dropdown) return;
+  const row = document.getElementById(`part-row-${idx}`);
+  const catSel = row ? row.querySelector('select') : null;
+  const cat = catSel ? catSel.value : '';
+  const q = query.toLowerCase().trim();
+  if (q.length < 2) { dropdown.style.display = 'none'; return; }
+  const results = partsDB.filter(p =>
+    p.name.toLowerCase().includes(q) && (!cat || p.cat === cat)
+  ).slice(0, 7);
+  if (!results.length) { dropdown.style.display = 'none'; return; }
+  dropdown.innerHTML = results.map((p, i) =>
+    `<div class="ac-item" onmousedown="selectAutocomplete(${idx}, '${p.name.replace(/'/g,"\\'")}', ${p.price})">
+      <span class="ac-name">${p.name}</span>
+      <span class="ac-price">${p.price.toLocaleString('ru-RU')} ₽</span>
+    </div>`
+  ).join('');
+  dropdown.style.display = 'block';
+}
+
+function selectAutocomplete(idx, name, price) {
+  const row = document.getElementById(`part-row-${idx}`);
+  if (!row) return;
+  const nameInp = row.querySelectorAll('input')[0];
+  const priceInp = row.querySelectorAll('input')[2];
+  if (nameInp) { nameInp.value = name; updatePart(idx,'name',name); }
+  if (priceInp) { priceInp.value = price; updatePart(idx,'price',price); }
+  const dropdown = document.getElementById(`autocomplete-${idx}`);
+  if (dropdown) dropdown.style.display = 'none';
+  updateTotal();
+}
+
+function addPart(cat = '', name = '', link = '', price = '') {
   const idx = parts.length;
-  parts.push({ cat, name, price });
+  parts.push({ cat, name, link, price });
 
   const tbody = document.getElementById('parts-body');
   const tr = document.createElement('tr');
@@ -1010,7 +1160,15 @@ function addPart(cat = '', name = '', price = '') {
         ${categories.map(c => `<option value="${c}" ${c===cat?'selected':''}>${c}</option>`).join('')}
       </select>
     </td>
-    <td><input type="text" placeholder="Название или ссылка на товар" value="${name}" oninput="updatePart(${idx},'name',this.value)" /></td>
+    <td style="position:relative">
+      <input type="text" placeholder="Название товара" value="${name}"
+        oninput="updatePart(${idx},'name',this.value); showAutocomplete(${idx}, this.value)"
+        onblur="setTimeout(()=>{ const d=document.getElementById('autocomplete-${idx}'); if(d) d.style.display='none'; },200)"
+        onfocus="showAutocomplete(${idx}, this.value)"
+      />
+      <div id="autocomplete-${idx}" class="autocomplete-dropdown"></div>
+    </td>
+    <td><input type="url" placeholder="https://..." value="${link}" oninput="updatePart(${idx},'link',this.value)" style="color:var(--accent)" /></td>
     <td><input type="number" placeholder="0" value="${price}" oninput="updatePart(${idx},'price',this.value)" style="text-align:right" /></td>
     <td><button onclick="removePart(${idx})" style="background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:16px;padding:4px 6px;border-radius:4px;transition:color .2s" onmouseover="this.style.color='var(--accent2)'" onmouseout="this.style.color='var(--text-dim)'">×</button></td>
   `;
@@ -1036,12 +1194,12 @@ function updateTotal() {
     if (!p) return;
     const row = document.getElementById(`part-row-${i}`);
     if (!row) return;
-    const inp = row.querySelectorAll('input')[1];
+    const inp = row.querySelectorAll('input')[2];
     if (inp) total += parseFloat(inp.value) || 0;
   });
   const sym = symbols[currentCurrency];
   document.getElementById('total-price').textContent = formatPrice(total);
-  const label = document.querySelector('.parts-table th:nth-child(3)');
+  const label = document.querySelector('.parts-table th:nth-child(4)');
   if (label) label.textContent = `Цена (${sym})`;
 }
 
@@ -1057,8 +1215,8 @@ function saveBuild() {
     const row = document.getElementById(`part-row-${i}`);
     if (!row) return;
     const nameInp = row.querySelectorAll('input')[0];
-    const priceInp = row.querySelectorAll('input')[1];
-    const catSel = row.querySelector('select');
+    const linkInp = row.querySelectorAll('input')[1];
+    const priceInp = row.querySelectorAll('input')[2];
     const pn = nameInp ? nameInp.value : '';
     const pp = parseFloat(priceInp ? priceInp.value : 0) || 0;
     total += pp;
@@ -1096,7 +1254,7 @@ function showTab(tab) {
   if (tab === 'create' && parts.length === 0) {
     // Pre-fill with default categories
     ['Процессор','Видеокарта','Оперативная память','SSD','Корпус','Материнская плата','Блок питания','Охлаждение'].forEach(cat => {
-      addPart(cat, '', '');
+      addPart(cat, '', '', '');
     });
   }
 }
