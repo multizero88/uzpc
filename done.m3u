@@ -1,0 +1,147 @@
+﻿#EXTM3U
+#EXTINF:-1 group-title="Российские" tvg-logo="http://rafail1982.uz/logo/Первый канал HD.png", Первый канал HD
+#EXTVLCOPT:http-user-agent=HTTP User-Agent
+https://bl.rutube.ru/livestream/c58f502c7bb34a8fcdd976b221fca292/index.m3u8?s=lmXcLXuG86134J5a9fUHtQ&e=2068506931&scheme=https
+#EXTINF:-1 tvg-id="ttv14030" tvg-rec="7" timeshift="7", Первый канал (+2)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/40/stream.m3u8
+#EXTINF:-1 group-title="Российские" tvg-logo="http://rafail1982.uz/logo/НТВ HD.png", НТВ HD
+#EXTVLCOPT:http-user-agent=HTTP User-Agent
+https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?s=E5FB6LF5iVXO3ikWKlv1NA&e=2068506931&scheme=https
+#EXTINF:-1 group-title="Российские" tvg-id="ttv26557" tvg-rec="7" timeshift="7", Россия 1 (+2)
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+http://vgtrkregion-reg.cdnvideo.ru/vgtrk/2/russia1-hd/index.m3u8
+#EXTINF:-1 tvg-id="ttv19738" tvg-rec="7" timeshift="7", ТВЦ (+2)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/668/stream.m3u8
+#EXTINF:-1 group-title="Российские" tvg-logo="http://rafail1982.uz/logo/ТНТ HD.png", ТНТ HD
+#EXTVLCOPT:http-user-agent=HTTP User-Agent
+https://bl.rutube.ru/livestream/546602986e6a424d74d594876ddb3f04/index.m3u8?s=LTSrgtYBpE8r2aujUZ81LA&e=2068506931&scheme=https
+#EXTINF:-1 group-title="Российские" tvg-logo="http://rafail1982.uz/logo/ТНТ4 HD.png", ТНТ4 HD
+#EXTVLCOPT:http-user-agent=HTTP User-Agent
+https://bl.rutube.ru/livestream/c801a7087e29a097192d74c270fbc6c1/index.m3u8?s=gSfZr_b1wBE3aUNAD0mlXA&e=2068506932&scheme=https
+#EXTINF:-1 tvg-id="ttv17588", Домашний (+2)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/1493/stream.m3u8
+#EXTINF:-1 tvg-id="ttv10124" tvg-rec="7" timeshift="7", ТНТ (+2)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/42/stream.m3u8
+#EXTINF:-1 tvg-id="ttv389" tvg-rec="7" timeshift="7", Че
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+http://178.212.71.253:8002/play/a00s/index.m3u8
+#EXTINF:-1 group-title="Российские", Суббота
+#EXTVLCOPT:http-user-agent=HTTP User-Agent
+https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?s=K5qwXPiww7h9EIwodnvrAQ&e=2068506935&scheme=https
+#EXTINF:-1 tvg-id="ttv1020", Шансон ТВ
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/219/stream.m3u8
+#EXTINF:-1 group-title="Познавательные" tvg-id="ttv3449" tvg-logo="http://rafail1982.uz/logo/Discovery Channel HD.png", Discovery Channel HD
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+http://5.188.159.128:8070/DiscoveryChannel/index.m3u8
+#EXTINF:-1 tvg-id="ttv10328" tvg-rec="7" timeshift="7", National Geographic HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/91/stream.m3u8
+#EXTINF:-1 tvg-id="ttv10329" tvg-rec="7" timeshift="7", Nat Geo Wild HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/95/stream.m3u8
+#EXTINF:-1 tvg-id="ttv29095" tvg-rec="7" timeshift="7", Дождь HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/268/stream.m3u8
+#EXTINF:-1 tvg-id="ttv397" tvg-rec="7" timeshift="7", РБК HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/1183/stream.m3u8
+#EXTINF:-1 group-title="Rutube (VPN)" tvg-logo="http://rafail1982.uz/logo/ТВ3 HD.png", ТВ3 HD
+https://bl.rutube.ru/livestream/7bf12d9c050f9a7ef3728db5730432ae/index.m3u8?s=BiEIkoge8H3wZmTBLfwgpw&e=2075674717&scheme=https
+#EXTINF:-1 tvg-id="ttv29888", МИР (+2)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/351/stream.m3u8
+#EXTINF:-1 group-title="RUTUBE" tvg-logo="http://rafail1982.uz/logo/rutube.png", ТНТ4 HD
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+https://bl.rutube.ru/livestream/c801a7087e29a097192d74c270fbc6c1/index.m3u8?s=kUSdOuI4XghLic68Vvw1ig&e=1752089015&scheme=https
+#EXTINF:-1 group-title="Российские" tvg-logo="http://rafail1982.uz/logo/2x2.png", 2x2
+#EXTVLCOPT:http-user-agent=HTTP User-Agent
+https://bl.rutube.ru/livestream/392b4686b770bae2da6bf5ac4574add5/index.m3u8?s=hwyoufQp4n4DEevoTh79AQ&e=2068506934&scheme=https
+#EXTINF:-1 group-title="Российские", Суббота
+#EXTVLCOPT:http-user-agent=HTTP User-Agent
+https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?s=K5qwXPiww7h9EIwodnvrAQ&e=2068506935&scheme=https
+#EXTINF:-1 group-title="Развлекательные" tvg-logo="http://rafail1982.uz/logo/Пятница!.png", Пятница!
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+https://vod.tuva.ru/friday/index.m3u8
+#EXTINF:-1 tvg-id="ttv754", Ю
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+https://bl.rutube.ru/livestream/df6fe73494a26f74da51573fd97b9baa/index.m3u8?s=JTAW4J-xV9JKMAUbJmgmIQ&e=2068506966&scheme=https
+#EXTINF:-1 tvg-id="ttv1086", Муз ТВ
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+https://bl.rutube.ru/livestream/df6fe73494a26f74da51573fd97b9baa/index.m3u8?s=JTAW4J-xV9JKMAUbJmgmIQ&e=2068506966&scheme=https
+#EXTINF:-1 group-title="Развлекательные", MIXM
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+https://bl.rutube.ru/livestream/88eba514854a55d87a4b66b66b1977e7/index.m3u8?s=627TjzA4VCXicgJ7x1Zncg&e=2068506966&scheme=https
+#EXTINF:-1 tvg-id="ttv31339", Megogo Music (UA)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/2997/stream.m3u8
+#EXTINF:-1 tvg-id="ttv25314", Bridge TV Delux HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/205/stream.m3u8
+#EXTINF:-1 tvg-id="ttv24706", Муз ТВ (+2)
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+https://bl.rutube.ru/livestream/df6fe73494a26f74da51573fd97b9baa/index.m3u8?s=JTAW4J-xV9JKMAUbJmgmIQ&e=2068506966&scheme=https
+#EXTINF:-1 group-title="Развлекательные", MIXM
+#EXTVLCOPT:http-user-agent=HTTP User-Agent
+https://bl.rutube.ru/livestream/88eba514854a55d87a4b66b66b1977e7/index.m3u8?s=627TjzA4VCXicgJ7x1Zncg&e=2068506966&scheme=https
+#EXTINF:-1 group-title="Развлекательные", VIVA Russia HD
+#EXTVLCOPT:http-user-agent=HTTP User-Agent
+https://bl.rutube.ru/livestream/f712ae5ff3db23ec09b3674133d44daa/index.m3u8?s=huO81WRGvesnVMCCPmNTRQ&e=2068506970&scheme=https
+#EXTINF:-1 tvg-id="ttv403" tvg-logo="http://rafail1982.uz/logo/BRIDGE.png", Bridge TV
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+http://31148.rafail1982.uz/Bridge_TV/index.m3u8
+#EXTINF:-1 tvg-id="ttv30513", Dance TV HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/2728/stream.m3u8
+#EXTINF:-1 tvg-id="ttv26519", MCM Top Russia
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/670/stream.m3u8
+#EXTINF:-1 tvg-id="ttv25318" tvg-logo="http://rafail1982.uz/logo/RU.TV.png", RU.TV
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+https://bl.rutube.ru/livestream/b1eb8e90d7e636677b3eb73b4fcbb717/index.m3u8?s=z8iI3jVMag-witLRIH5zVg&e=2068506966&scheme=https
+#EXTINF:-1 tvg-id="ttv1824", Музыка Первого
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/214/stream.m3u8
+#EXTINF:-1 tvg-id="ttv6430" tvg-rec="7" timeshift="7", ViP Megahit HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/136/stream.m3u8
+#EXTINF:-1 tvg-id="ttv6431" tvg-rec="7" timeshift="7", ViP Premiere HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/135/stream.m3u8
+#EXTINF:-1 tvg-id="ttv25049", ViP Serial HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/138/stream.m3u8
+#EXTINF:-1 tvg-id="ttv6427" tvg-rec="7" timeshift="7", Viju TV1000 Action HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/893/stream.m3u8
+#EXTINF:-1 tvg-id="ttv25624" tvg-rec="7" timeshift="7", Viju TV1000 HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/574/stream.m3u8
+#EXTINF:-1 tvg-id="ttv6430" tvg-rec="7" timeshift="7", ViP Megahit HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/136/stream.m3u8
+#EXTINF:-1 tvg-id="ttv6431" tvg-rec="7" timeshift="7", ViP Premiere HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/135/stream.m3u8
+#EXTINF:-1 tvg-id="ttv31415" tvg-rec="7" timeshift="7", Окко.Прайм Спорт HD
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/158/stream.m3u8
+#EXTINF:-1 group-title="Спортивные" tvg-logo="http://rafail1982.uz/logo/Матч ТВ HD.png", Матч ТВ HD
+#EXTVLCOPT:http-user-agent=HTTP User-Agent
+https://bl.rutube.ru/livestream/11bbbec75a2ceb8cf446ad16813c6eec/index.m3u8?s=dmUCxHrffLTIK5v-vKhGXQ&e=2068506970&scheme=https
+#EXTINF:-1 tvg-id="ttv28844", Setanta Qazaqstan HD (KZ)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/1897/stream.m3u8
+#EXTINF:-1 tvg-id="ttv25309" tvg-rec="7" timeshift="7", Setanta Sports 1 HD
+http://vod.splay.uz/live_splay/original/Setanta1HD/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="ttv29015", Setanta Sports 1 Lietuva HD (LV)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/2857/stream.m3u8
+#EXTINF:-1 tvg-id="ttv25307" tvg-rec="7" timeshift="7", Setanta Sports 2 HD
+http://vod.splay.uz/live_splay/original/Setanta2HD/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="ttv29016", Setanta Sports 2 Lietuva HD (LV)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/2868/stream.m3u8
+#EXTINF:-1 tvg-id="ttv30907", Setanta Sports 3 HD (GE)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/2891/stream.m3u8
+#EXTINF:-1 tvg-id="ttv28845", Setanta Sports HD (MD)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/1898/stream.m3u8
+#EXTINF:-1 tvg-id="ttv25310" tvg-rec="7" timeshift="7", Setanta Sports HD (UA)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/186/stream.m3u8
+#EXTINF:-1 group-title="1 UZBEKISTAN VPN" tvg-logo="http://rafail1982.uz/logo/uzb.png", Zor TV HD
+https://s83.rafail1982.uz/7016/tracks-v3a1/mono.m3u8?token=v4U6uf8YTXmmSw7yoWLPCMK47hgfW8fpvgHwWyFGPHWbfwPsluQDW-2PY50zgkCBiBuNujfR38yL5c7PCikw_ub137_-GciyFlJ2GjfXB0qrx1WuyF53jB4eLR5t_II-TwxWZQe_tm4riTS-bHUxtcLf3WvAqk6jQTaic1Ta4C7BbCJWu6jemtVNxaK3JUHXL2KYvb5mZ4xqn0X7CpgtOjW_GV2Dvdybqc21TizRLRHONhj6c8t53GEtpj-vln9oCBRNwV8SMqkUtY-U1YZ4koIoJMdkdpx-0hzfl6OrgMnkgtvm88XcENFhnE6QVoemsgb5xebhAjSXNt1Eo8ngL3yoLq8fCzD0xvYT73MbKjM
+#EXTINF:-1 tvg-id="ttv26645", Setanta Sports+ HD (UA)
+http://streamer.enchart.one/42/0e726e493958c2963d5bf914a4afa32f286b4427/187/stream.m3u8
+#EXTINF:-1 group-title="Узбекские", Toshkent UZ
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+http://s8.rafail1982.uz/1003/tracks-v1a1/mono.m3u8
+#EXTINF:-1 group-title="Узбекские", My5 UZ
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+http://s8.rafail1982.uz/1012/tracks-v1a1/mono.m3u8
+#EXTINF:-1 group-title="Узбекские", Milliy TV UZ
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+http://s8.rafail1982.uz/1014/tracks-v1a1/mono.m3u8
+#EXTINF:-1 group-title="Узбекские", Sevimli UZ
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+http://s8.rafail1982.uz/1017/tracks-v1a1/mono.m3u8
+#EXTINF:-1 group-title="Узбекские", LuxTV UZ
+#EXTVLCOPT:http-user-agent=Player (Linux; Android 10)
+http://s8.rafail1982.uz/1210/tracks-v1a1/mono.m3u8
